@@ -1,0 +1,31 @@
+# Java/Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+.mvn/
+.gradle/
+build/
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+.factorypath
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node/Web (if any)
+node_modules/
+dist/
+.env
+
+# Logs
+*.log
