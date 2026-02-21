@@ -22,15 +22,16 @@ public class AuthController {
     public ResponseEntity<?> signup(@RequestBody User user) {
         try {
             if (userRepository.existsByMobileNumber(user.getMobileNumber())) {
-                return ResponseEntity.badRequest().body(Map.of("success", false, "message", "Mobile number already registered"));
+                return ResponseEntity.badRequest()
+                        .body(Map.of("success", false, "message", "Mobile number already registered"));
             }
 
             // Generate Application Number
-            String appNo = "TN" + System.currentTimeMillis() % 100000 + "M2"; 
+            String appNo = "TN" + System.currentTimeMillis() % 100000 + "M2";
             user.setApplicationNumber(appNo);
 
             User savedUser = userRepository.save(user);
-            
+
             Map<String, Object> response = new HashMap<>();
             response.put("success", true);
             response.put("message", "Registration successful");
@@ -39,7 +40,8 @@ public class AuthController {
 
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            return ResponseEntity.internalServerError().body(Map.of("success", false, "message", "Error registering user: " + e.getMessage()));
+            return ResponseEntity.internalServerError()
+                    .body(Map.of("success", false, "message", "Error registering user: " + e.getMessage()));
         }
     }
 
@@ -56,6 +58,7 @@ public class AuthController {
                     response.put("data", Map.of("user", user, "token", UUID.randomUUID().toString())); // Dummy token
                     return ResponseEntity.ok(response);
                 })
-                .orElse(ResponseEntity.badRequest().body(Map.of("success", false, "message", "Invalid Application Number or Mobile Number")));
+                .orElse(ResponseEntity.badRequest()
+                        .body(Map.of("success", false, "message", "Invalid Application Number or Mobile Number")));
     }
 }

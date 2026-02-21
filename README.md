@@ -20,4 +20,4 @@ A comprehensive system for temple marriage registration and village profile mana
 - **Database**: MySQL.
 
 ## Deployment
-Refer to the `deployment_guide.md` in the brain artifacts for detailed instructions on hosting via Railway and Netlify.
+Refer to the local setup instructions for manual execution.
